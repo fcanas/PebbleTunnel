@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E76E7F0E1AB7E2990068F0E0 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = E76E7F0D1AB7E2990068F0E0 /* main.c */; };
+		E76E7F141AB92AFB0068F0E0 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = E76E7EFB1AB7D5270068F0E0 /* main.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,8 +34,9 @@
 
 /* Begin PBXFileReference section */
 		E76E7EFB1AB7D5270068F0E0 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = main.c; path = ../src/main.c; sourceTree = "<group>"; };
-		E76E7F0B1AB7E2990068F0E0 /* dummy-target */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "dummy-target"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E76E7F0B1AB7E2990068F0E0 /* build-me */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "build-me"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E76E7F0D1AB7E2990068F0E0 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
+		E76E7F151AB92B7C0068F0E0 /* appinfo.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = appinfo.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +53,7 @@
 		E76E7EEF1AB7D5270068F0E0 = {
 			isa = PBXGroup;
 			children = (
+				E76E7F151AB92B7C0068F0E0 /* appinfo.json */,
 				E76E7EFA1AB7D5270068F0E0 /* PebbleTemplate */,
 				E76E7F0C1AB7E2990068F0E0 /* dummy-target */,
 				E76E7EF91AB7D5270068F0E0 /* Products */,
@@ -61,7 +63,7 @@
 		E76E7EF91AB7D5270068F0E0 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E76E7F0B1AB7E2990068F0E0 /* dummy-target */,
+				E76E7F0B1AB7E2990068F0E0 /* build-me */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -71,7 +73,8 @@
 			children = (
 				E76E7EFB1AB7D5270068F0E0 /* main.c */,
 			);
-			path = PebbleTemplate;
+			name = PebbleTemplate;
+			path = src;
 			sourceTree = "<group>";
 		};
 		E76E7F0C1AB7E2990068F0E0 /* dummy-target */ = {
@@ -117,7 +120,7 @@
 			);
 			name = "build-me";
 			productName = "dummy-target";
-			productReference = E76E7F0B1AB7E2990068F0E0 /* dummy-target */;
+			productReference = E76E7F0B1AB7E2990068F0E0 /* build-me */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
@@ -160,7 +163,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E76E7F0E1AB7E2990068F0E0 /* main.c in Sources */,
+				E76E7F141AB92AFB0068F0E0 /* main.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -279,6 +282,11 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"~/pebble-dev/PebbleSDK-current/Pebble/include/",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -290,6 +298,11 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
+					"~/pebble-dev/PebbleSDK-current/Pebble/include/",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
