@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		E76E7F141AB92AFB0068F0E0 /* main.c in Sources */ = {isa = PBXBuildFile; fileRef = E76E7EFB1AB7D5270068F0E0 /* main.c */; };
+		E76E7F221ABB3FC70068F0E0 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76E7F211ABB3FC70068F0E0 /* main.swift */; };
+		E76E7F291ABB53480068F0E0 /* lut.c in Sources */ = {isa = PBXBuildFile; fileRef = E76E7F281ABB53480068F0E0 /* lut.c */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,6 +32,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 		};
+		E76E7F1D1ABB3FC70068F0E0 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -37,10 +48,22 @@
 		E76E7F0B1AB7E2990068F0E0 /* build-me */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "build-me"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E76E7F0D1AB7E2990068F0E0 /* main.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; path = main.c; sourceTree = "<group>"; };
 		E76E7F151AB92B7C0068F0E0 /* appinfo.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = appinfo.json; sourceTree = "<group>"; };
+		E76E7F1F1ABB3FC70068F0E0 /* tunnel-lut */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "tunnel-lut"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E76E7F211ABB3FC70068F0E0 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		E76E7F261ABB49330068F0E0 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; usesTabs = 1; };
+		E76E7F271ABB51C80068F0E0 /* lut.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = lut.h; sourceTree = "<group>"; };
+		E76E7F281ABB53480068F0E0 /* lut.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = lut.c; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		E76E7F081AB7E2990068F0E0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E76E7F1C1ABB3FC70068F0E0 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -53,9 +76,11 @@
 		E76E7EEF1AB7D5270068F0E0 = {
 			isa = PBXGroup;
 			children = (
+				E76E7F261ABB49330068F0E0 /* Makefile */,
 				E76E7F151AB92B7C0068F0E0 /* appinfo.json */,
-				E76E7EFA1AB7D5270068F0E0 /* PebbleTemplate */,
+				E76E7EFA1AB7D5270068F0E0 /* PebbleTunnel */,
 				E76E7F0C1AB7E2990068F0E0 /* dummy-target */,
+				E76E7F201ABB3FC70068F0E0 /* tunnel-lut */,
 				E76E7EF91AB7D5270068F0E0 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -64,16 +89,19 @@
 			isa = PBXGroup;
 			children = (
 				E76E7F0B1AB7E2990068F0E0 /* build-me */,
+				E76E7F1F1ABB3FC70068F0E0 /* tunnel-lut */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		E76E7EFA1AB7D5270068F0E0 /* PebbleTemplate */ = {
+		E76E7EFA1AB7D5270068F0E0 /* PebbleTunnel */ = {
 			isa = PBXGroup;
 			children = (
+				E76E7F271ABB51C80068F0E0 /* lut.h */,
 				E76E7EFB1AB7D5270068F0E0 /* main.c */,
+				E76E7F281ABB53480068F0E0 /* lut.c */,
 			);
-			name = PebbleTemplate;
+			name = PebbleTunnel;
 			path = src;
 			sourceTree = "<group>";
 		};
@@ -85,6 +113,14 @@
 			path = "dummy-target";
 			sourceTree = "<group>";
 		};
+		E76E7F201ABB3FC70068F0E0 /* tunnel-lut */ = {
+			isa = PBXGroup;
+			children = (
+				E76E7F211ABB3FC70068F0E0 /* main.swift */,
+			);
+			path = "tunnel-lut";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXLegacyTarget section */
@@ -94,8 +130,8 @@
 			buildConfigurationList = E76E7F031AB7D5AF0068F0E0 /* Build configuration list for PBXLegacyTarget "pebble-target" */;
 			buildPhases = (
 			);
-			buildToolPath = ./xcpb.sh;
-			buildWorkingDirectory = "";
+			buildToolPath = make;
+			buildWorkingDirectory = /Users/fcanas/github/PebbleTunnel;
 			dependencies = (
 			);
 			name = "pebble-target";
@@ -123,6 +159,23 @@
 			productReference = E76E7F0B1AB7E2990068F0E0 /* build-me */;
 			productType = "com.apple.product-type.tool";
 		};
+		E76E7F1E1ABB3FC70068F0E0 /* tunnel-lut */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E76E7F231ABB3FC70068F0E0 /* Build configuration list for PBXNativeTarget "tunnel-lut" */;
+			buildPhases = (
+				E76E7F1B1ABB3FC70068F0E0 /* Sources */,
+				E76E7F1C1ABB3FC70068F0E0 /* Frameworks */,
+				E76E7F1D1ABB3FC70068F0E0 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "tunnel-lut";
+			productName = "tunnel-lut";
+			productReference = E76E7F1F1ABB3FC70068F0E0 /* tunnel-lut */;
+			productType = "com.apple.product-type.tool";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -138,9 +191,12 @@
 					E76E7F0A1AB7E2990068F0E0 = {
 						CreatedOnToolsVersion = 6.2;
 					};
+					E76E7F1E1ABB3FC70068F0E0 = {
+						CreatedOnToolsVersion = 6.2;
+					};
 				};
 			};
-			buildConfigurationList = E76E7EF31AB7D5270068F0E0 /* Build configuration list for PBXProject "PebbleTemplate" */;
+			buildConfigurationList = E76E7EF31AB7D5270068F0E0 /* Build configuration list for PBXProject "PebbleTunnel" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -154,6 +210,7 @@
 			targets = (
 				E76E7F021AB7D5AF0068F0E0 /* pebble-target */,
 				E76E7F0A1AB7E2990068F0E0 /* build-me */,
+				E76E7F1E1ABB3FC70068F0E0 /* tunnel-lut */,
 			);
 		};
 /* End PBXProject section */
@@ -164,6 +221,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				E76E7F141AB92AFB0068F0E0 /* main.c in Sources */,
+				E76E7F291ABB53480068F0E0 /* lut.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E76E7F1B1ABB3FC70068F0E0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E76E7F221ABB3FC70068F0E0 /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -307,10 +373,37 @@
 			};
 			name = Release;
 		};
+		E76E7F241ABB3FC70068F0E0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		E76E7F251ABB3FC70068F0E0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		E76E7EF31AB7D5270068F0E0 /* Build configuration list for PBXProject "PebbleTemplate" */ = {
+		E76E7EF31AB7D5270068F0E0 /* Build configuration list for PBXProject "PebbleTunnel" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E76E7EFD1AB7D5270068F0E0 /* Debug */,
@@ -326,12 +419,22 @@
 				E76E7F051AB7D5AF0068F0E0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E76E7F0F1AB7E2990068F0E0 /* Build configuration list for PBXNativeTarget "build-me" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				E76E7F101AB7E2990068F0E0 /* Debug */,
 				E76E7F111AB7E2990068F0E0 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E76E7F231ABB3FC70068F0E0 /* Build configuration list for PBXNativeTarget "tunnel-lut" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E76E7F241ABB3FC70068F0E0 /* Debug */,
+				E76E7F251ABB3FC70068F0E0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};

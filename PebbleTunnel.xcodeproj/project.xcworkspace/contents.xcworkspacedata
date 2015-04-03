@@ -2,6 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:PebbleTemplate.xcodeproj">
+      location = "self:PebbleTunnel.xcodeproj">
    </FileRef>
 </Workspace>

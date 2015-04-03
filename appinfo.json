@@ -3,15 +3,15 @@
     "capabilities": [
         ""
     ],
-    "companyName": "samccone@gmail.com",
-    "longName": "random-run-2",
+    "companyName": "fcanas@gmail.com",
+    "longName": "pebble demo",
     "projectType": "native",
     "resources": {
         "media": [
         ]
     },
     "sdkVersion": "2",
-    "shortName": "random-run-2",
+    "shortName": "pebble-demo",
     "uuid": "0efe30aa-b026-47ab-86f1-834dc561ac40",
     "versionCode": 1,
     "versionLabel": "1.0",
