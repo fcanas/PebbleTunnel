@@ -4,15 +4,15 @@
         ""
     ],
     "companyName": "fcanas@gmail.com",
-    "longName": "pebble demo",
+    "longName": "pebble tunnel",
     "projectType": "native",
     "resources": {
         "media": [
         ]
     },
     "sdkVersion": "2",
-    "shortName": "pebble-demo",
-    "uuid": "0efe30aa-b026-47ab-86f1-834dc561ac40",
+    "shortName": "pebble-tunnel",
+    "uuid": "1573fdf5-83d5-4d20-9ccd-d0fc6ca12f54",
     "versionCode": 1,
     "versionLabel": "1.0",
     "watchapp": {
