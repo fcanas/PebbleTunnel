@@ -35,12 +35,12 @@ void render_scene(Layer *layer, GContext *ctx) {
     for(int y = 0; y < 168; y++) {
         for(int x = 0; x < paddedScreenWidth; x+=8) {
             uint8_t word = 0;
-            int rx = x/2;
-            int ry = y/2;
+            int rx = x/2 - (accel_x>>4);
+            int ry = y/2 + (accel_y>>6);
             for (int bit = 0; bit<8; bit++) {
-                int color = texture_lut((unsigned int)( ( distance_lut(rx-(bit) - (accel_x>>4), ry + (accel_y>>6)) ) + shiftX) % texWidth,
-                                        (unsigned int)( ( angle_lut(rx-(bit) - (accel_x>>4), ry + (accel_y>>6))    ) + shiftY) % texHeight );
-                word |= (color & 1) << (7-bit);
+                int color = texture_lut((unsigned int)( ( distance_lut(rx + (bit>>2), ry) ) + shiftX) % texWidth,
+                                        (unsigned int)( ( angle_lut(rx + (bit>>2), ry) ) + shiftY) % texHeight );
+                word |= (color & 1) << (bit);
             }
             screen_buffer[screenBufferIndex] = word;
             screenBufferIndex++;
