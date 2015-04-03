@@ -40,7 +40,7 @@ void render_scene(Layer *layer, GContext *ctx) {
             for (int bit = 0; bit<8; bit++) {
                 int color = texture_lut((unsigned int)( ( distance_lut(rx-(bit) - (accel_x>>4), ry + (accel_y>>6)) ) + shiftX) % texWidth,
                                         (unsigned int)( ( angle_lut(rx-(bit) - (accel_x>>4), ry + (accel_y>>6))    ) + shiftY) % texHeight );
-                word |= (color & 1) << (8-bit);
+                word |= (color & 1) << (7-bit);
             }
             screen_buffer[screenBufferIndex] = word;
             screenBufferIndex++;
