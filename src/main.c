@@ -11,11 +11,12 @@
 
 Window *my_window;
 TextLayer *text_layer;
-int animation = 0;
+int animation = 2000;
 static int paddedScreenWidth = 160;
 
 int texture_lut(int x, int y){
-    return (x <= (texWidth >> 1)) == (y <= (texHeight >> 1));
+//    return (x <= (texWidth >> 1)) == (y <= (texHeight >> 1));
+    return ((x&14) == (y&14)) ^ ((x&3) == (y&3));
 }
 
 int16_t accel_x;
@@ -29,18 +30,18 @@ void render_scene(Layer *layer, GContext *ctx) {
     for(int y = 0; y < 168; y++) {
         for(int x = 0; x < paddedScreenWidth; x+=8) {
             uint8_t word = 0;
-            int rx = x/2 - (accel_x>>4);
-            int ry = y/2 + (accel_y>>6);
+            int rx = x;// - (accel_x>>4);
+            int ry = y % 70;// + (accel_y>>6);
             for (int bit = 0; bit<8; bit++) {
-                int color = texture_lut((unsigned int)( distance_lut(rx + (bit>>2), ry) + animation) % texWidth,
-                                        (unsigned int)( angle_lut(rx + (bit>>2), ry) + animation) % texHeight );
+                int color = texture_lut((unsigned int)( distance_lut((rx<<2) + bit, ry) ) + animation % texWidth,
+                                        (unsigned int)( angle_lut(rx + (bit), ry)) % texHeight );
                 word |= (color & 1) << (bit);
             }
             screen_buffer[screenBufferIndex] = word;
             screenBufferIndex++;
         }
     }
-    animation += (texWidth>>1)-1;
+    animation += 1;// (texWidth>>1)-1;
 }
 
 Layer *rLayer;
