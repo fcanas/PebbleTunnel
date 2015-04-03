@@ -14,8 +14,6 @@ TextLayer *text_layer;
 int animation = 0;
 static int paddedScreenWidth = 160;
 
-int texWidth = 16;
-int texHeight = 16;
 int texture_lut(int x, int y){
     return (x <= (texWidth >> 1)) == (y <= (texHeight >> 1));
 }
@@ -27,10 +25,6 @@ void render_scene(Layer *layer, GContext *ctx) {
     
     uint8_t *screen_buffer = (uint8_t*)((GBitmap*)ctx)->addr;
     
-    //calculate the shift values out of the animation value
-    int shiftX = (int) animation;
-    int shiftY = (int) animation;
-    //
     int screenBufferIndex = 0;
     for(int y = 0; y < 168; y++) {
         for(int x = 0; x < paddedScreenWidth; x+=8) {
@@ -38,15 +32,15 @@ void render_scene(Layer *layer, GContext *ctx) {
             int rx = x/2 - (accel_x>>4);
             int ry = y/2 + (accel_y>>6);
             for (int bit = 0; bit<8; bit++) {
-                int color = texture_lut((unsigned int)( ( distance_lut(rx + (bit>>2), ry) ) + shiftX) % texWidth,
-                                        (unsigned int)( ( angle_lut(rx + (bit>>2), ry) ) + shiftY) % texHeight );
+                int color = texture_lut((unsigned int)( distance_lut(rx + (bit>>2), ry) + animation) % texWidth,
+                                        (unsigned int)( angle_lut(rx + (bit>>2), ry) + animation) % texHeight );
                 word |= (color & 1) << (bit);
             }
             screen_buffer[screenBufferIndex] = word;
             screenBufferIndex++;
         }
     }
-    animation += 7;
+    animation += (texWidth>>1)-1;
 }
 
 Layer *rLayer;

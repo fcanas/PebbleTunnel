@@ -8,8 +8,8 @@
 
 import Foundation
 
-let texWidth = 32
-let texHeight = 32
+let texWidth = 20
+let texHeight = 20
 let screenWidth = 144/2
 let screenHeight = 168/2
 
@@ -46,6 +46,8 @@ for(var x = 0; x < screenWidth; x++) {
 
 stdOut.writeData(makeData(cConst(screenWidth, "screenWidth")))
 stdOut.writeData(makeData(cConst(screenHeight, "screenHeight")))
+stdOut.writeData(makeData(cConst(texWidth, "texWidth")))
+stdOut.writeData(makeData(cConst(texHeight, "texHeight")))
 
 stdOut.writeData(makeData(cArray(distanceTable, "distance", type:"char")))
 stdOut.writeData(makeData(cArray(angleTable, "angle", type: "signed char")))
