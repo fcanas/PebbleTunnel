@@ -131,7 +131,7 @@
 			buildPhases = (
 			);
 			buildToolPath = make;
-			buildWorkingDirectory = /Users/fcanas/github/PebbleTunnel;
+			buildWorkingDirectory = "$(PROJECT_HOME)";
 			dependencies = (
 			);
 			name = "pebble-target";
@@ -437,6 +437,7 @@
 				E76E7F251ABB3FC70068F0E0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
