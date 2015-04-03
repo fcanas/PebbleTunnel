@@ -33,7 +33,7 @@ void render_scene(Layer *layer, GContext *ctx) {
             int rx = x;// - (accel_x>>4);
             int ry = y % 70;// + (accel_y>>6);
             for (int bit = 0; bit<8; bit++) {
-                int color = texture_lut((unsigned int)( distance_lut((rx<<2) + bit, ry) ) + animation % texWidth,
+                int color = texture_lut((unsigned int)( distance_lut((rx>>1) + bit, ry) ) + animation % texWidth,
                                         (unsigned int)( angle_lut(rx + (bit), ry)) % texHeight );
                 word |= (color & 1) << (bit);
             }
